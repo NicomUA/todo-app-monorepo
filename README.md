@@ -1,6 +1,6 @@
 # TodoApp
 
-## Requirements
+## Project use:
 * Docker
 * NestJS
 * Prisma
