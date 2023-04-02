@@ -42,12 +42,16 @@ You can build and run API in docker using
 
 
 ## Testing
-1. API
+First run API in docker
+```
+./scripts/run_api.sh
+```
+1. for API testing
 ```
 yarn nx test todo-api 
 yarn nx e2e todo-api-e2e
 ```
-2. UI
+2. for UI testing
 ```
 yarn nx test todo-ui
 yarn nx e2e todo-ui-e2e
