@@ -7,6 +7,7 @@
 * React
 * NX
 * Yarn
+* OpenAPI UI (docs)
 
 ## Setup
 1. set env file
