@@ -1,4 +1,4 @@
-import { BadRequestException } from '@nestjs/common';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
@@ -24,6 +24,10 @@ export class AuthService {
   async login(email: string, pass: string): Promise<any> {
     const user = await this.userService.getByEmail(email);
     const passwordHash = this.utils.sha1(pass);
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
 
     if (user?.password !== passwordHash) {
       throw new BadRequestException();

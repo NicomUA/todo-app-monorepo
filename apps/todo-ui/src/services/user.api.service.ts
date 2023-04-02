@@ -16,7 +16,6 @@ export const UserApi = {
     })
 
     const token = response.data.access_token;
-    console.log(token);
 
     if (token) {
       localStorage.setItem('user', JSON.stringify(jwt_decode(token)));
@@ -28,7 +27,7 @@ export const UserApi = {
   },
 
   register: async (email: string, password: string, name: string) => {
-    const response = await api().request({
+    await api().request({
       url: "auth/reg",
       method: "POST",
       data: {

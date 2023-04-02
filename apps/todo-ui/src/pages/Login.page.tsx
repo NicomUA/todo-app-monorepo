@@ -20,10 +20,22 @@ export function LoginPage() {
       await UserApi.login(email, password);
       navigator("/");
     } catch (e: any) {
-      if (e.response.status === 400) {
-        setError({ status: 400, error: e.response.data.error, message: ['Wrong email or password'] })
+      const { response: { status, statusText } } = e;
+
+      switch (status) {
+        case 400: {
+          setError({ status: 400, error: statusText, message: ['Wrong email or password'] })
+          break;
+        }
+        case 404: {
+          setError({ status: 400, error: statusText, message: ['User nt found'] })
+          break;
+        }
+
+        default: {
+          setError(e.response)
+        }
       }
-      else setError(e.response)
 
       throw new Error(e);
     }
