@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  position: absolute;
+  top: -45px;
+  right: 0;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    li {
+      padding: 5px 10px;
+    }
+
+  }
+}
+
+.greeting {
+  white-space: nowrap;
+}

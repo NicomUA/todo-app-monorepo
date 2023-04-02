@@ -1,0 +1,79 @@
+.Todo-List {
+  font-family: 'Mark Pro';
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--dark-blue-grey);
+}
+
+
+.Add-a-new-todo {
+  font-family: 'Mark Pro';
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--cool-grey);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.todo-delete {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:hover+label:before {
+  opacity: .5;
+}
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  color: #111;
+  font-weight: 600;
+}
+
+.checkbox:before {
+  z-index: 15;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+
+input[type="checkbox"]:checked+label {
+  color: #000;
+}
+
+input[type="checkbox"]:checked+label:before {
+  border-color: transparent;
+  border-left-color: #2ecc71;
+  border-bottom-color: #2ecc71;
+  transform: rotate(-50deg);
+  width: 22px;
+  height: 12px;
+  top: 3px;
+}

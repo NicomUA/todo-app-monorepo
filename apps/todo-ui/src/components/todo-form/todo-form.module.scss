@@ -1,0 +1,12 @@
+.todo-form-input {
+  width: 100%;
+  margin: 10px 0 26px;
+  border-bottom: solid 1px var(--silver);
+  border: none;
+  border-bottom: solid 1px var(--silver);
+
+  &:focus-visible {
+    outline: none;
+    border-bottom: solid 1px var(--dark-sky-blue);
+  }
+}

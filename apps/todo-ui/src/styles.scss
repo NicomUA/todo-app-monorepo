@@ -1,0 +1,73 @@
+@import url('https://fonts.cdnfonts.com/css/mark-pro');
+
+:root {
+  --cool-grey: #9ea3b2;
+  --silver: #d7dae0;
+  --cool-grey-two: #a1a4ad;
+  --dark-sky-blue: #4a77e5;
+  --white: #e1e1e1;
+  --dark-blue-grey: #1f2a4b;
+}
+
+.Text-Style-5 {
+  font-family: 'Mark Pro';
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--cool-grey);
+}
+
+.Text-Style-4 {
+  font-family: 'Mark Pro';
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--cool-grey-two);
+}
+
+.Text-Style-3 {
+  font-family: 'Mark Pro';
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--dark-blue-grey);
+}
+
+.Text-Style-2 {
+  font-family: 'Mark Pro';
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+.Text-Style-6 {
+  font-family: 'Mark Pro';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--dark-blue-grey);
+}
+
+.form-error {
+  display: flex;
+  background-color: #ff0000b0;
+  color: white;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
