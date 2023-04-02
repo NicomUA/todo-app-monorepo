@@ -39,7 +39,6 @@ You can build and run API in docker using
 ./scripts/run_api.sh
 ```
 
-
 ## Testing
 First run API in docker
 ```
@@ -55,3 +54,6 @@ yarn nx e2e todo-api-e2e
 yarn nx test todo-ui
 yarn nx e2e todo-ui-e2e
 ```
+
+## Docs
+API docs available in swagger http://localhost:3000/api/doc
