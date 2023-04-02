@@ -39,3 +39,16 @@ You can build and run API in docker using
 ./scripts/build_api.sh
 ./scripts/run_api.sh
 ```
+
+
+## Testing
+1. API
+```
+yarn nx test todo-api 
+yarn nx e2e todo-api-e2e
+```
+2. UI
+```
+yarn nx test todo-ui
+yarn nx e2e todo-ui-e2e
+```
