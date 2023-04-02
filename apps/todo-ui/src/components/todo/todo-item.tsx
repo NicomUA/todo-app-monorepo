@@ -13,7 +13,7 @@ export function ToDoItem({ todo, deleteToDo, setCompleted }: ToDoItem) {
   }
 
   return (
-    <div className={`checkbox-container ${styles['Add-a-new-todo']}`}>
+    <div className={`checkbox-container ${styles['todo-item']}`}>
       <input type="checkbox" id={todo.id} defaultChecked={todo.done} onChange={handleDone} />
       <label className={styles['checkbox']} htmlFor={todo.id}>{todo.title}</label>
       <span className={styles['todo-delete']} onClick={() => deleteToDo(todo.id)}>X</span>

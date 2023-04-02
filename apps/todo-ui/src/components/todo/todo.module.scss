@@ -1,17 +1,4 @@
-.Todo-List {
-  font-family: 'Mark Pro';
-  font-size: 22px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: var(--dark-blue-grey);
-}
-
-
-.Add-a-new-todo {
+.todo-item {
   font-family: 'Mark Pro';
   font-size: 16px;
   font-weight: normal;
@@ -66,14 +53,13 @@ input[type="checkbox"]:hover+label:before {
 
 input[type="checkbox"]:checked+label {
   color: #000;
+  text-decoration: line-through;
+  font-weight: 400;
 }
 
 input[type="checkbox"]:checked+label:before {
-  border-color: transparent;
-  border-left-color: #2ecc71;
-  border-bottom-color: #2ecc71;
-  transform: rotate(-50deg);
-  width: 22px;
-  height: 12px;
-  top: 3px;
+  background-color: #4a77e5;
+  background-image: url('img/check.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
 }
