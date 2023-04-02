@@ -19,7 +19,7 @@ export function TodoForm(props: TodoFormProps) {
   return (
     <div className='todo-add-form'>
       <form onSubmit={handleAdd}>
-        <TodoText type='text' placeholder='Add new item' value={title} onChange={(e) => setTitle(e.target.value)} />
+        <TodoText min={3} type='text' placeholder='Add new item' value={title} onChange={(e) => setTitle(e.target.value)} />
       </form>
     </div>
   );

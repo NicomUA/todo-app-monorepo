@@ -1,17 +1,16 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import FormError from '../components/form-error/form-error';
 import TodoBtn from '../components/todo-btn/todo-btn';
 import TodoHeader from '../components/todo-header/todo-header';
 import TodoText from '../components/todo-text/todo-text';
-import { useLocalStorage } from '../hooks/localstorage';
 import { UserApi } from '../services/user.api.service';
-import { FormError } from './Register.page';
 
 export function LoginPage() {
   const navigator = useNavigate();
 
   const [email, setEmail] = useState('test@test.com');
-  const [password, setPassword] = useState('test');
+  const [password, setPassword] = useState('test!test');
   const [error, setError] = useState<FormError | null>(null);
 
   async function loginUser(e: FormEvent) {
@@ -22,7 +21,7 @@ export function LoginPage() {
       navigator("/");
     } catch (e: any) {
       if (e.response.status === 400) {
-        setError({ status: 400, statusText: 'Wrong email or password' })
+        setError({ status: 400, error: e.response.data.error, message: ['Wrong email or password'] })
       }
       else setError(e.response)
 
@@ -36,11 +35,7 @@ export function LoginPage() {
 
   return (
     <>
-      {error && (
-        <div className='form-error Text-Style-6'>
-          <p>{error.status}: {error.statusText}</p>
-        </div>
-      )}
+      {error && (<FormError {...error}></FormError>)}
 
       <TodoHeader title='Welcome back!' subtitle='Log in to continue.' />
 

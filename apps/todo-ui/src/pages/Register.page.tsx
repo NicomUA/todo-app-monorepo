@@ -1,22 +1,18 @@
 import { AxiosError } from 'axios';
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import FormError from '../components/form-error/form-error';
 import TodoBtn from '../components/todo-btn/todo-btn';
 import TodoHeader from '../components/todo-header/todo-header';
 import TodoText from '../components/todo-text/todo-text';
 import { UserApi } from '../services/user.api.service';
 
 
-export interface FormError {
-  status: number;
-  statusText: string;
-}
-
 export function RegisterPage() {
   const navigator = useNavigate();
 
   const [email, setEmail] = useState('test@test.com');
-  const [password, setPassword] = useState('test');
+  const [password, setPassword] = useState('test!test');
   const [name, setName] = useState('test_name');
   const [error, setError] = useState<FormError | null>(null);
 
@@ -29,10 +25,27 @@ export function RegisterPage() {
       access_token = data.access_token;
       navigator("/");
     } catch (e: any) {
-      if (e.response.status === 409) {
-        setError({ status: 409, statusText: 'User already exist' })
+      let errors: FormError = {
+        status: e.response.data.statusCode,
+        error: e.response.data.error,
+        message: [],
       }
-      else setError(e.response)
+
+      switch (e.response.status) {
+        case 409: {
+          errors.message = ['User already exist'];
+          setError(errors)
+          break;
+        }
+        case 400: {
+          errors.message = e.response.data.message;
+          setError(errors)
+          break;
+        }
+
+        default:
+          setError(e.response)
+      }
 
       throw new Error(e);
     }
@@ -45,11 +58,7 @@ export function RegisterPage() {
 
   return (
     <>
-      {error && (
-        <div className='form-error Text-Style-6'>
-          <p>{error.status}: {error.statusText}</p>
-        </div>
-      )}
+      {error && (<FormError {...error}></FormError>)}
 
       <TodoHeader title='Welcome!' subtitle='Sign up to start using Simpledo today.' />
 

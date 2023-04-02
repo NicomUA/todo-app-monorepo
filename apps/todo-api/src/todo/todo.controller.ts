@@ -7,15 +7,16 @@ import {
   Param,
   Delete,
   UseGuards,
-  Req,
-  BadRequestException,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { GetUser } from '../auth/get-user.decorator';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('To Do')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('todo')
 export class TodoController {

@@ -38,12 +38,17 @@ export function TodoNav() {
           </>
         )}
 
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/reg">Register</Link>
-        </li>
+        {!user && (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/reg">Register</Link>
+            </li>
+          </>
+        )}
+
         {user && (
           <li>
             <Link to="/logout">Logout</Link>

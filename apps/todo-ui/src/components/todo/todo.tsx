@@ -9,12 +9,14 @@ import TodoForm from '../todo-form/todo-form';
 import { Todo } from '@prisma/client';
 import TodoFilter from '../todo-filter/todo-filter';
 import TodoHeader from '../todo-header/todo-header';
+import FormError from '../form-error/form-error';
 
 export type ToDoFilter = 'all' | 'completed' | 'incompleted';
 
 export function TodoContainer() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<ToDoFilter>('all');
+  const [error, setError] = useState<FormError | null>(null);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -38,8 +40,19 @@ export function TodoContainer() {
 
 
   async function addTodo(title: string) {
-    const todo: Todo = await ToDoApi.createTodo(title);
-    setTodos([...todos, todo])
+    try {
+      const todo: Todo = await ToDoApi.createTodo(title);
+      setTodos([...todos, todo])
+      setError(null);
+    } catch (e: any) {
+      if (e.response.status === 400) {
+        setError({ status: 400, error: e.response.data.error, message: e.response.data.message })
+      }
+      else setError(e.response)
+
+      throw new Error(e);
+    }
+
   }
 
   async function deleteToDo(id: string) {
@@ -61,6 +74,8 @@ export function TodoContainer() {
   return (
     <ToDoContext.Provider value={todos}>
       <div>
+        {error && (<FormError {...error}></FormError>)}
+
         <TodoHeader title='ToDo list' />
 
         <TodoForm addTodo={addTodo}></TodoForm>
