@@ -30,8 +30,7 @@ yarn db:migrate:run
 yarn dev
 ```
 6. open in browser http://localhost:4200/
-7. Register you user.
-
+7. Register your user. test values already set, but you can change it to any valid.
 
 ## Optional
 You can build and run API in docker using 
